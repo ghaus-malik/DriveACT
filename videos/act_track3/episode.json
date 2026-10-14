@@ -1,0 +1,32 @@
+{
+ "env": 0,
+ "episode": 0,
+ "track": 3,
+ "layout_seed": 1000,
+ "outcome": "success",
+ "success": true,
+ "reached_goal": true,
+ "curb_strike": false,
+ "steps": 732,
+ "time_s": 73.2,
+ "route_length": 467.07179838175256,
+ "progress": 0.9991010335470883,
+ "mean_track_error": 0.7903099685418801,
+ "max_track_error": 3.611300468444824,
+ "lane_departure": true,
+ "lane_departure_fraction": 0.20491803278688525,
+ "mean_abs_steer_rate": 0.006469503126509203,
+ "mean_abs_accel_rate": 0.008489859560148312,
+ "mean_abs_steer_jerk": 0.0033401042385830903,
+ "min_clearance": 0.5850709676742554,
+ "obstacle_groups": 5,
+ "obstacle_groups_passed": 5,
+ "mean_speed": 6.402020230319331,
+ "noisy": false,
+ "extra": {
+  "latency_ms_per_env": 5.798585106023267,
+  "wall_time_s": 789.5456590652466
+ },
+ "policy": "act",
+ "checkpoint": "checkpoints/act_all/best.pt"
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# generated data and training outputs
+data/
+checkpoints/
+runs/
+logs/
+*.h5
+results/**/tb/

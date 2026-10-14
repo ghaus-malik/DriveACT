@@ -1,0 +1,5 @@
+seeds:
+  train_obstacles: 0          # obstacle placement stream for data collection
+  eval_obstacles: 100000      # disjoint stream for evaluation (unseen placements)
+lane_departure_margin: 1.75   # car centre farther than this from the reference lateral offset = lane departure
+obstacle_pass_margin: 3.0     # an obstacle counts as passed once the car centre is this far beyond it

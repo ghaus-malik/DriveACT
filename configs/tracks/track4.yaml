@@ -1,0 +1,44 @@
+name: "Track 4 - complete urban driving challenge"
+description: Procedural city route with 4-way intersections (left, right and straight), curves, parked cars, cones and barriers.
+speed_limit: 9.0
+# Layout seed "showcase" (= -1) is this hand-designed layout; numeric seeds are generated procedurally.
+pieces:
+  - [straight, 75]
+  - [junction, straight]
+  - [straight, 90]
+  - [junction, right]
+  - [straight, 80]
+  - [curve, 35, 45]
+  - [straight, 40]
+  - [curve, 35, -45]
+  - [straight, 80]
+  - [junction, left]
+  - [straight, 95]
+  - [junction, right]
+  - [straight, 85]
+procedural:
+  num_junctions: [3, 4]
+  num_curves: [1, 3]
+  straight_length: [60, 100]
+  curve_radius: [28, 45]
+  curve_angle_deg: [30, 60]
+  max_tries: 400
+start:
+  s: 3.0
+  lateral_jitter: 0.4
+  heading_jitter_deg: 4.0
+goal_margin: 12.0
+splits:                       # held-out test layouts are never used for training
+  train: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  test: [-1, 1000, 1001, 1002, 1003, 1004, 1005]
+obstacles:
+  groups:
+    parked_car: [1, 3]
+    cone_taper: [1, 2]
+    barrier: [1, 2]
+    left_parked_car: [0, 1]
+  min_gap: 30.0
+  start_clearance: 40.0
+  goal_clearance: 45.0
+  junction_clearance: 28.0       # >= buffer_before + lane_change_length: lane changes never start inside an intersection
+  min_radius: 28.0

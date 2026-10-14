@@ -1,0 +1,14 @@
+# Planar LiDAR (exact analytic ray casting against the collision geometry of the track and obstacles).
+lidar:
+  num_rays: 720               # 0.5 deg spacing
+  num_sectors: 120            # min-pooled to 3 deg sectors for the policy
+  max_range: 40.0             # m; returns are clipped to this and divided by it
+  scan_height: 0.50           # m; walls, cones (0.91 m), barriers and parked cars cross this plane, curbs (0.15 m) do not
+  mount_x: 0.0                # sensor origin in the vehicle frame (footprint centre)
+
+# Route features given to the policy (all in the vehicle frame).
+route:
+  lookahead_m: [4.0, 8.0, 12.0, 16.0, 20.0, 25.0, 30.0, 40.0]
+  lookahead_scale: 40.0       # divide lookahead coordinates by this
+  maneuver_horizon: 60.0      # m; next intersection manoeuvre is reported within this distance
+  goal_horizon: 50.0          # m; remaining distance to the goal is clipped to this

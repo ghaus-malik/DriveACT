@@ -1,0 +1,36 @@
+# Visual demonstration mode only (never needed for training or headless evaluation).
+sky_texture: "{ISAAC_NUCLEUS_DIR}/Materials/Textures/Skies/PolyHaven/kloofendal_43d_clear_puresky_4k.hdr"
+dome_intensity: 250.0
+sun_intensity: 1200.0
+sun_angle: 0.6                # deg, apparent size of the sun (soft shadow edge)
+sun_color: [1.0, 0.96, 0.88]
+sun_azimuth_deg: 210.0
+sun_elevation_deg: 48.0
+antialiasing: DLAA
+decor: true                   # buildings, trees, street lamps, start/goal gantries (behind the walls only)
+fps: 25                       # video frame rate (physics_dt 0.01 -> render every 4 physics steps)
+
+cameras:
+  width: 1280
+  height: 720
+  front:
+    pos: [1.75, 0.0, 1.20]    # vehicle frame: bonnet camera near the front of the hood (cabin glass is opaque)
+    pitch_deg: 4.0            # looking slightly down
+    focal_length: 14.0
+    horizontal_aperture: 20.955
+  chase:
+    distance: 10.5            # behind the car
+    height: 4.0
+    look_ahead: 7.0
+    focal_length: 16.0
+    smoothing: 0.12           # exponential smoothing of the chase camera position per frame
+  top:
+    follow_height: 55.0       # following top-down view centred ahead of the car
+    follow_ahead: 12.0
+    focal_length: 18.0
+    overview_margin: 15.0     # fixed overview camera framing the whole track
+
+overlay:
+  trail_length: 400           # past positions drawn as markers
+  show_prediction: true       # ACT chunk rolled out through the kinematic bicycle model
+  show_reference: false       # expert reference path (debugging only)

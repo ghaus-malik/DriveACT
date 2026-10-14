@@ -1,0 +1,30 @@
+name: "Track 2 - parked vehicle avoidance"
+description: Two-lane road with two bends and one parked car blocking part of the right lane.
+speed_limit: 10.0
+pieces:
+  - [straight, 80]
+  - [curve, 50, 35]
+  - [straight, 60]
+  - [curve, 50, -35]
+  - [straight, 70]
+variation:
+  length_jitter: 0.15
+  radius_jitter: 0.15
+  angle_jitter_deg: 10.0
+  mirror_prob: 0.5
+start:
+  s: 3.0
+  lateral_jitter: 0.4
+  heading_jitter_deg: 4.0
+goal_margin: 12.0
+splits:
+  train: [0, 1, 2, 3, 4, 5, 6, 7]
+  test: [1000, 1001, 1002, 1003]
+obstacles:
+  groups:
+    parked_car: [1, 1]        # [min, max] number of groups of this type
+  min_gap: 35.0               # route metres between consecutive obstacle groups
+  start_clearance: 40.0
+  goal_clearance: 45.0
+  junction_clearance: 28.0       # >= buffer_before + lane_change_length: lane changes never start inside an intersection
+  min_radius: 30.0            # no obstacles on curves with a smaller axis radius

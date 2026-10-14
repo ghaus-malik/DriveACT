@@ -1,0 +1,37 @@
+name: "Track 3 - multiple static obstacles"
+description: Longer road with several bends, parked cars, cone tapers and concrete barriers.
+speed_limit: 10.0
+pieces:
+  - [straight, 60]
+  - [curve, 40, 50]
+  - [straight, 70]
+  - [curve, 25, -80]
+  - [straight, 75]
+  - [curve, 45, 40]
+  - [straight, 60]
+  - [curve, 30, -60]
+  - [straight, 80]
+variation:
+  length_jitter: 0.15
+  radius_jitter: 0.15
+  angle_jitter_deg: 10.0
+  mirror_prob: 0.5
+start:
+  s: 3.0
+  lateral_jitter: 0.4
+  heading_jitter_deg: 4.0
+goal_margin: 12.0
+splits:
+  train: [0, 1, 2, 3, 4, 5, 6, 7]
+  test: [1000, 1001, 1002, 1003]
+obstacles:
+  groups:
+    parked_car: [1, 3]
+    cone_taper: [1, 2]
+    barrier: [1, 2]
+    left_parked_car: [0, 1]
+  min_gap: 30.0
+  start_clearance: 40.0
+  goal_clearance: 45.0
+  junction_clearance: 28.0       # >= buffer_before + lane_change_length: lane changes never start inside an intersection
+  min_radius: 30.0

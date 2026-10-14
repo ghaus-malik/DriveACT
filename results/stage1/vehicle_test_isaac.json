@@ -1,0 +1,70 @@
+{
+ "backend": "isaac",
+ "geometry": {
+  "length": 4.4,
+  "width": 1.8,
+  "wheelbase": 2.7,
+  "track_width": 1.56,
+  "wheel_radius": 0.33,
+  "front_axle_x": 1.4000000000000001,
+  "rear_axle_x": -1.3,
+  "max_steer": 0.6108652381980153,
+  "max_steer_rate": 0.7853981633974483,
+  "knuckle_limit": 0.7853981633974483,
+  "max_accel": 3.0,
+  "max_brake": 6.0,
+  "max_speed": 14.0,
+  "command_slack": 1.0
+ },
+ "min_turn_radius_rear_axle_m": 3.8559996182037097,
+ "results": {
+  "settle": {
+   "max_drift_m": 0.007568605480499618,
+   "max_speed": 0.0029684684704989195,
+   "z_range": [
+    -8.079409599304199e-05,
+    -8.034706115722656e-05
+   ],
+   "min_up_z": 1.0
+  },
+  "accel": {
+   "commanded": 2.0,
+   "measured": 1.9953373420499312,
+   "speed_at_5s": 9.86441707611084
+  },
+  "brake": {
+   "v0": 9.814830780029297,
+   "stopping_distance_m": 9.184035704854777,
+   "ideal_m": 8.027575270050875,
+   "stopping_time_s": 1.9000000000000004,
+   "min_speed_after": 0.00042905891314148903
+  },
+  "turn": {
+   "speed": 4.998203563690185,
+   "steer_rad": 0.30543261909900765,
+   "yaw_rate": 0.5567937296955432,
+   "radius_m": 8.976759789344648,
+   "bicycle_radius_m": 8.563305966380675,
+   "measured_steer_rad": 0.29932784949030194
+  },
+  "steer_step": {
+   "target_rad": 0.6108652381980153,
+   "final_rad": 0.6015135049819946,
+   "rise_time_95_s": 0.9000000000000004,
+   "slew_limited_time_s": 0.7388888888888889
+  },
+  "no_reverse": {
+   "min_speed": 0.0,
+   "max_drift_m": 0.00775146484375
+  }
+ },
+ "checks": {
+  "settle": true,
+  "accel": true,
+  "brake": true,
+  "turn": true,
+  "steer_step": true,
+  "no_reverse": true
+ },
+ "passed": true
+}

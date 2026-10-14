@@ -1,0 +1,18 @@
+physics_dt: 0.01              # s
+control_dt: 0.10              # s -> 10 Hz control; decimation = 10 physics steps
+render_every: 4               # visual mode: render (and capture video) every 4 physics steps = 25 fps
+env_spacing: 600.0            # m between environment grid points; each track's bounding box is centred on its point
+env_margin: 30.0              # m of free space required around every track's bounding box (checked at start-up)
+
+episode:
+  min_speed_for_timeout: 2.5  # max episode time = route length / this + margin
+  time_margin_s: 30.0
+  stuck_time_s: 20.0          # terminate if the car moved < 1 m in this time (not near the goal)
+
+goal:
+  tolerance: 2.0              # |route distance to goal| for success
+  stop_speed: 0.3             # m/s
+  overshoot: 6.0              # m past the goal -> failure
+
+collision:
+  footprint_margin: 0.0       # added to the car footprint for geometric collision checks

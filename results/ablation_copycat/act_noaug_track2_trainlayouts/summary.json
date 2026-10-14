@@ -1,0 +1,153 @@
+{
+ "policy": "act",
+ "track": 2,
+ "split": "train",
+ "layout_seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "backend": "isaac",
+ "obstacle_stream": 0,
+ "episodes": [
+  0,
+  31
+ ],
+ "checkpoint": "/home/ghaus-m/driveact/checkpoints/act_s5_track12/best.pt",
+ "replan_every": 2,
+ "temporal_ensemble": false,
+ "chunk_size": 20,
+ "epoch": 22,
+ "metrics": {
+  "episodes": 32,
+  "goal_completion": {
+   "rate": 0.0,
+   "count": 0,
+   "n": 32,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "reached_goal_any": {
+   "rate": 0.0,
+   "count": 0,
+   "n": 32,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "collision": {
+   "rate": 0.9375,
+   "count": 30,
+   "n": 32,
+   "ci95": [
+    0.7985253275199642,
+    0.9826897968048427
+   ]
+  },
+  "wall_collision": {
+   "rate": 0.0,
+   "count": 0,
+   "n": 32,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "vehicle_collision": {
+   "rate": 0.9375,
+   "count": 30,
+   "n": 32,
+   "ci95": [
+    0.7985253275199642,
+    0.9826897968048427
+   ]
+  },
+  "cone_collision": {
+   "rate": 0.0,
+   "count": 0,
+   "n": 32,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "barrier_collision": {
+   "rate": 0.0,
+   "count": 0,
+   "n": 32,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "curb_strike": {
+   "rate": 0.03125,
+   "count": 1,
+   "n": 32,
+   "ci95": [
+    0.005537717362550945,
+    0.15744607800372734
+   ]
+  },
+  "lane_departure": {
+   "rate": 1.0,
+   "count": 32,
+   "n": 32,
+   "ci95": [
+    0.8928172849426366,
+    1.0
+   ]
+  },
+  "timeout_or_stuck": {
+   "rate": 0.0625,
+   "count": 2,
+   "n": 32,
+   "ci95": [
+    0.017310203195157234,
+    0.2014746724800358
+   ]
+  },
+  "off_route_or_overshoot": {
+   "rate": 0.0,
+   "count": 0,
+   "n": 32,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "obstacle_avoidance": {
+   "passed": 0,
+   "total": 32,
+   "rate": 0.0,
+   "ci95": [
+    0.0,
+    0.1071827150573635
+   ]
+  },
+  "outcomes": {
+   "collision_vehicle": 30,
+   "stuck": 2
+  },
+  "mean_progress": 0.44269096216863835,
+  "route_tracking_error_m": 0.6393296322166466,
+  "max_route_tracking_error_m": 4.015876293182373,
+  "lane_departure_time_fraction": 0.17035729632822222,
+  "travel_time_s_success": NaN,
+  "mean_speed_mps": 6.933329391414485,
+  "steering_smoothness": 0.002760380677566974,
+  "steering_jerk": 0.002098982648343169,
+  "accel_smoothness": 0.007217247986650326,
+  "min_clearance_m": -0.04781842231750488,
+  "mean_min_clearance_m": -0.0013175159692764282,
+  "inference_latency_ms_per_env": 0.7718918573029985
+ }
+}

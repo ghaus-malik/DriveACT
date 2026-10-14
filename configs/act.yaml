@@ -1,0 +1,46 @@
+# Action Chunking with Transformers (Zhao et al., 2023) adapted to low-dimensional driving observations.
+model:
+  chunk_size: 20              # 2.0 s of actions at 10 Hz
+  hidden_dim: 256
+  nheads: 8
+  dim_feedforward: 1024
+  enc_layers: 4
+  dec_layers: 4               # all layers are used (the reference code effectively uses only the first, see docs)
+  cvae_layers: 4
+  latent_dim: 32
+  dropout: 0.1
+  lidar_channels: [32, 64]    # 1-D conv stem over LiDAR sectors
+  lidar_tokens: 15            # 120 sectors -> 15 tokens of 8 sectors
+  use_prev_actions: true      # previous steering/longitudinal commands as policy inputs (false = ablation, always zeroed)
+
+train:
+  seed: 0
+  batch_size: 256
+  epochs: 60                  # one epoch = one pass over all timesteps
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  warmup_steps: 500
+  kl_weight: 10.0
+  grad_clip: 10.0
+  val_fraction: 0.1           # by episode
+  num_workers: 0
+  log_every: 50
+  save_every_epochs: 10
+  amp: false                 # bfloat16 autocast on CUDA
+  tensorboard: true
+  # Against the "copycat" shortcut (predicting the next command from the previous one instead of from the scene):
+  # during training the previous-command features are replaced by their mean with probability prev_action_dropout
+  # and otherwise perturbed with Gaussian noise of std prev_action_noise (normalised units). Inference is unchanged.
+  # Without this ACT reached 0/48 on Track 2 (it kept cruising into the parked car); see README, stage 5.
+  prev_action_dropout: 0.5
+  prev_action_noise: 0.5
+
+inference:
+  replan_every: 2             # control steps executed from each chunk (1-5)
+  temporal_ensemble: false
+  ensemble_k: 0.01            # w_i = exp(-k i), i = 0 is the oldest prediction (as in the reference code)
+
+bc:                           # single-step behaviour-cloning baseline (same observation encoders, no chunking, no CVAE)
+  hidden_dim: 256
+  mlp_layers: 3
+  dropout: 0.1

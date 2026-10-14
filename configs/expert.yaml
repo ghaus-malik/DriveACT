@@ -1,0 +1,31 @@
+# Privileged scripted driver: lateral-offset planner + pure pursuit + speed profile (driveact/experts).
+lateral:
+  pass_offset: 3.5            # lateral offset (left-lane centre) used to pass an obstacle in the right lane
+  clearance: 0.6              # minimum free space between the car body and an obstacle
+  curb_clearance: 0.35        # minimum free space between the car body and the curb
+  buffer_before: 7.0          # route metres before an obstacle at which the car must be fully shifted
+  buffer_after: 7.0           # ... and after it, before shifting back
+  lane_change_length: 20.0    # length of the smooth (cosine) lateral ramp (peak lateral accel ~1.9 m/s^2 at 6 m/s)
+  merge_gap: 14.0             # two passes closer than this are merged (stay in the left lane)
+
+speed:
+  lateral_accel: 2.2          # m/s^2 limit for the curvature speed limit
+  plan_decel: 2.2             # m/s^2 used by the backward pass of the speed profile
+  plan_accel: 1.6             # m/s^2 used by the forward pass
+  pass_speed: 6.5             # m/s while shifted for an obstacle
+  min_speed: 1.0              # m/s floor of the profile except for the final stop
+  gain: 1.5                   # (m/s^2) per (m/s) speed error
+  preview_time: 0.5           # s; speed reference is read this far ahead
+  hold_brake: -0.6            # normalised command used to hold the car at the goal
+
+pure_pursuit:
+  lookahead_time: 0.7         # s
+  lookahead_min: 5.0          # m
+  lookahead_max: 14.0         # m
+
+noise:                        # DART-style disturbances during data collection; labels stay the clean expert action
+  episode_fraction: 0.5       # share of collected episodes with disturbances
+  steer_sigma: 0.04           # OU innovation std on the executed steering command (normalised units)
+  steer_theta: 0.3            # OU mean reversion per control step (stationary std ~0.056 = 2 deg of steering)
+  accel_sigma: 0.05
+  accel_theta: 0.3

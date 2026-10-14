@@ -1,0 +1,48 @@
+# Full-size compact passenger car (procedural USD articulation, see driveact/vehicle/car_usd.py).
+# Lengths in metres, masses in kg. Vehicle frame: x forward, y left, z up; origin at the footprint centre, ground level.
+
+body:
+  length: 4.40
+  width: 1.80
+  height: 1.45
+  wheelbase: 2.70
+  front_overhang: 0.80        # front axle -> front bumper (rear overhang = 4.40 - 2.70 - 0.80 = 0.90)
+  track_width: 1.56           # distance between left and right wheel centres
+  wheel_radius: 0.33
+  wheel_width: 0.22
+  ground_clearance: 0.18      # chassis collision box bottom above ground
+
+mass:
+  chassis: 1350.0
+  wheel: 20.0
+  knuckle: 8.0
+  com_height: 0.50            # chassis centre of mass above ground
+
+steering:
+  max_angle_deg: 35.0         # bicycle-model steering angle at action +-1 (Ackermann splits it per wheel)
+  max_rate_deg_s: 45.0        # steering actuator slew-rate limit
+  knuckle_limit_deg: 45.0     # joint limit (inner wheel turns further than the bicycle angle)
+
+longitudinal:
+  max_accel: 3.0              # m/s^2 commanded at action +1
+  max_brake: 6.0              # m/s^2 deceleration commanded at action -1
+  max_speed: 14.0             # m/s; the speed command is clamped to [0, max_speed]: no reverse driving
+  command_slack: 1.0          # anti-windup: speed command stays within +-slack of the measured speed
+
+drive:                        # Isaac Lab implicit joint drives
+  steer_stiffness: 6.0e4      # N m / rad
+  steer_damping: 2.5e3        # N m s / rad
+  steer_effort: 6.0e3         # N m
+  wheel_damping: 1.2e3        # velocity drive gain, N m s / rad
+  wheel_effort: 1.4e3         # N m per wheel (4 x 1400 / 0.33 = 17 kN, more than tyre friction allows)
+  wheel_velocity_limit: 90.0  # rad/s (30 m/s)
+
+tyre:
+  static_friction: 1.0
+  dynamic_friction: 0.9
+
+# Dynamics of the CPU-only kinematic test double (driveact/vehicle/kinematic.py). It mirrors the actuator
+# limits above so that unit tests and pipeline dry runs exercise the same interface; it is NOT the simulator.
+kinematic_double:
+  speed_time_constant: 0.10   # s, first-order lag of the measured speed behind the speed command
+  substeps: 10

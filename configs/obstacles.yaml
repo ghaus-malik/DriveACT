@@ -1,0 +1,28 @@
+# Static obstacle types. Lateral offsets are measured from the right-lane centre (+ = left):
+# right curb -1.75, centre line +1.75, left-lane centre +3.5, left curb +5.25.
+parked_car:                   # parked in the right lane, sticking out into it
+  length: 4.40
+  width: 1.80
+  height: 1.45
+  offset: [-0.75, -0.05]      # range of the car-centre offset
+  yaw_deg: 4.0                # +- yaw relative to the road
+left_parked_car:              # parked in the opposite lane: the ego car must NOT swerve into it
+  length: 4.40
+  width: 1.80
+  height: 1.45
+  offset: [3.85, 4.25]
+  yaw_deg: 3.0
+cone_taper:                   # traffic cones closing the right lane diagonally (work zone)
+  count: [3, 5]
+  spacing: 3.0                # route metres between cones
+  radius: 0.18                # collision / LiDAR radius
+  height: 0.91
+  offset_start: -1.35
+  offset_end: [0.0, 0.7]
+barrier:                      # concrete (jersey) barriers across the right lane
+  count: [1, 2]
+  length: 2.0
+  width: 0.60
+  height: 0.81
+  offset: [-0.85, -0.55]      # centre offset of the first barrier; a second one sits 1.6 m further left
+  yaw_deg: 12.0               # +- around perpendicular to the road

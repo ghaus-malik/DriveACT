@@ -1,0 +1,27 @@
+{
+ "kind": "act",
+ "parameters": 10687938,
+ "train_episodes": 167,
+ "val_episodes": 19,
+ "train_steps_per_epoch": 272,
+ "train_timesteps": 69562,
+ "data": [
+  "/home/ghaus-m/driveact/data/track1_train.h5"
+ ],
+ "chunk_size": 20,
+ "epochs": 30,
+ "steps": 8160,
+ "best_val_l1_prior": 0.08019035614818687,
+ "time_s": 570.3564691543579,
+ "final": {
+  "epoch": 30,
+  "step": 8160,
+  "time_s": 570.1933495998383,
+  "train_loss": 0.09999432086068041,
+  "train_l1": 0.09920032327885137,
+  "train_kl": 7.939974816776264e-05,
+  "val_l1": 0.0840800955490092,
+  "val_kl": 9.748021082970677e-05,
+  "val_l1_prior": 0.08383690096199647
+ }
+}
